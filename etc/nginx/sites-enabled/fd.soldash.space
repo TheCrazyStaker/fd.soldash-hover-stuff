@@ -1,0 +1,32 @@
+server {
+    listen 80;
+    server_name fd.soldash.space;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name fd.soldash.space;
+
+    ssl_certificate /etc/letsencrypt/live/fd.soldash.space/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fd.soldash.space/privkey.pem;
+
+location / {
+    proxy_pass http://127.0.0.1:8080;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_read_timeout 86400;
+    
+    # Inject our tooltip script
+    proxy_set_header Accept-Encoding "";
+    sub_filter '</body>' '<div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:rgba(153,69,255,0.2);border-bottom:2px solid rgba(153,69,255,0.6);padding:22px 0;text-align:center;font-family:monospace;font-size:20px;font-weight:700;color:#c4b5fd;letter-spacing:0.08em;pointer-events:none;">◈ HOVER OVER ANY DASHBOARD ELEMENT FOR EXPLANATIONS</div><script src="https://soldash.space/fd-overlay.js"></script></body>';
+    sub_filter_once on;
+
+
+
+}
+
+}
