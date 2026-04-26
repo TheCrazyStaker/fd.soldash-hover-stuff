@@ -63,7 +63,7 @@ fd.soldash-hover-stuff/
 
 | Component | Location | Role |
 |-----------|----------|------|
-| Frankendancer node | `173.231.11.114:8080` | Runs the validator + GUI |
+| Frankendancer node | `localhost:8080 (validator server)` | Runs the validator + GUI |
 | Nginx (validator server) | `fd.soldash.space:443` | Proxies GUI, injects overlay script |
 | `fd-overlay.js` | `soldash.space/fd-overlay.js` | Served as static file, injected via sub_filter |
 | Soldash dashboard | `soldash.space` | Main analytics tool, links to fd.soldash.space |
