@@ -70,6 +70,9 @@ fd.soldash-hover-stuff/
 
 ---
 
+<img width="1868" height="897" alt="image" src="https://github.com/user-attachments/assets/c1b4217f-d617-474b-902f-8cd228c9846c" />
+
+
 ## Related
 
 - [soldash](https://github.com/TheCrazyStaker/soldash) — the main Solana stake analytics dashboard
